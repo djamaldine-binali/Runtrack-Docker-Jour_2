@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,17 +11,21 @@
             text-align: center;
             margin-top: 50px;
         }
+
         h1 {
             color: #333;
         }
+
         .status {
             font-size: 18px;
             margin-bottom: 20px;
         }
+
         table {
             margin: 0 auto;
             border-collapse: collapse;
         }
+
         td {
             width: 80px;
             height: 80px;
@@ -28,15 +33,18 @@
             vertical-align: middle;
             font-size: 36px;
             font-weight: bold;
-            border: 2px solid #000;
+            border: 2px solid black;
             cursor: pointer;
         }
+
         td:hover {
             background-color: #f0f0f0;
         }
+
         td.taken {
             cursor: not-allowed;
         }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -47,11 +55,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         button:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <h1>Tic Tac Toe</h1>
     <div class="status">C'est au tour de <span id="currentPlayer">X</span>.</div>
@@ -80,12 +90,17 @@
         const cells = document.querySelectorAll('td');
 
         async function saveResults(winner) {
-            const response = await fetch('/save', {
+            const response = await fetch('/results/save.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ winner }),
+                body: JSON.stringify({ winner, date: new Date().toISOString() }),
             });
-            return response.ok;
+
+            if (response.ok) {
+                console.log("Résultat sauvegardé dans results.json.");
+            } else {
+                console.error("Erreur lors de la sauvegarde des résultats.");
+            }
         }
 
         function makeMove(cell) {
@@ -106,8 +121,8 @@
             // Vérifier si c'est un match nul
             if (Array.from(cells).every(cell => cell.textContent !== '')) {
                 statusDisplay.textContent = "C'est un match nul !";
-                saveResults('Draw');
                 gameActive = false;
+                saveResults('Draw');
                 return;
             }
 
@@ -141,4 +156,5 @@
         }
     </script>
 </body>
+
 </html>
