@@ -158,10 +158,16 @@ Exemple :
 
 ![alt text](image/checking_volume_files.png)
 
-Let's run a few matchs of tictactoe !
+Let's run a few games of tictactoe !
 
 ![alt text](image/Xs_win.png)
 
 ![alt text](image/Os_win.png)
 
 ![alt text](image/draw.png)
+
+Then let's check our results in our volume using Docker Desktop :
+
+![alt text](image/score_check.png)
+
+We can see that our results correlate with the games played, it works !
