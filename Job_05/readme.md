@@ -68,10 +68,18 @@ RUN echo <nginx_setup>
 * home page `index.html`
   
 Request management :
-* Tries to load requested file, if it can't displays error 404 message `try _files $uri/=404`
-* Nginx can't treat php files so it sends the php requests to PHP-FPM that will execute them and return them to nginx to display them on the web page `fastcgi_pass 127.0.0.1:9000;`
+* Tries to load requested file, if it can't displays error 404 message : `try _files $uri/=404`
+* Nginx can't treat php files so it sends the php requests to PHP-FPM that will execute them and return them to nginx to display them on the web page : `fastcgi_pass 127.0.0.1:9000;`
 * Copy `index.html`, `save.php` and `results.json` towards /usr/share/nginx/html which is the website's root :
   How it works
   * `index.html` is in /usr/share/nginx/html since it's the main page.
   * `save.php` and `results.json` are stored in `/usr/share/nginx/html/results/`
 * Acces permissions : `RUN chmod -R 777 /usr/share/nginx/html/results/` -> Gives full access (reading, writing, execute)
+* Exposing port : Indicates to Docker that containers will listen on the 80 port (we will still have to set a port up using the `-p` command while creating it) : `EXPOSE 80`. 
+  * Start command :
+    *  Runs a shell : `-sh` , `-c` tells `sh` to execute the command that follows as a string. This ensures that the whole command is executed. 
+    *  Launches PHP-FPM in the background : `php-fpm -D`
+    *  Launches nginx on the foreground : `nginx -g 'deamon off;'` 
+  This garanties the container won't be deleted if shut down.
+
+
