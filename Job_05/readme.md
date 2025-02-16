@@ -96,9 +96,18 @@ Next we create a volume to store our game results, you guessed it, we are callin
 ![alt text](image/volume_creation.png)
 
 ```sh
+docker volume ls
+```
+
+This command checks all the volumes you have stored locally. 
+
+![alt text](image/docker_volume_ls.png)
+
+```sh
 run -it -d -p  <your_port> --name <container_name> -v <volume_name>:/creating/path/for/storage/ <image_name>
 ```
 
 Once we have one, we can run a container, using our image, and mouting a volume in the process.
 
 ![alt text](image/run_container_w_volume.png)
+
