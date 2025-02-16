@@ -83,3 +83,13 @@ Request management :
   This garanties the container won't be deleted if shut down.
 
 
+We are going to create an image to serve the game files, to make it clearer in our process, we are simply calling it `game_files` :
+
+![alt text](image/image_creation.png)
+
+```sh
+docker volume create <volume_name>
+```
+
+Next we create a volume to store our game results, you guessed it, we are calling it `game-results`.
+
