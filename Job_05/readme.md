@@ -111,3 +111,7 @@ Once we have one, we can run a container, using our image, and mouting a volume 
 
 ![alt text](image/run_container_w_volume.png)
 
+We can check if it's working on our web browser using the port :
+
+![alt text](image/checking_w_browser.png)
+
