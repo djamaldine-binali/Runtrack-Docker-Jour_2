@@ -28,7 +28,7 @@ Copies everything from the current folder to `/var/www/html`.
 
 `Apache` inside our container serves files from this directory by default, it will look for `index.php` in that folder so if it's empty there will be an error message like this one on the web page :
 
-![alt text](forbidden_403.png) (This image was taken on the internet for the purpose of the explaination)
+ ![ ](images/forbidden_403.png)(This image was taken on the internet for the purpose of the explaination)
 
 ```sh
 EXPOSE <port_of_your_choice> 
@@ -64,4 +64,4 @@ We can stop it if we want :
 
 ![alt text](images/command_stop.png)
 
-![alt text](<Capture d'écran 2025-02-13 123049.png>)
+![alt text](images/website_stopped.png)
