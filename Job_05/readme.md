@@ -157,3 +157,11 @@ Since Docker volumes are mounted inside containers, the easiest way to check the
 Exemple : 
 
 ![alt text](image/checking_volume_files.png)
+
+Let's run a few matchs of tictactoe !
+
+![alt text](image/Xs_win.png)
+
+![alt text](image/Os_win.png)
+
+![alt text](image/draw.png)
