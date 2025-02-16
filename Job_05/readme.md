@@ -131,4 +131,29 @@ To check the container's content we can use these commands :
 docker exec -it <container_name> ls -l /path/to/file
 ```
 
+* `docker exec` runs a command inside an existing running container.
+* `-it` opens an interactive terminal session.
+* `ls -l /path/to/file` lists files inside that directory.
+
+
+Exemple with our container and files :
+
 ![alt text](image/checking_container_content.png)
+
+We can see our storage files in the container. 
+
+```sh
+docker run --rm -it -v <volume_name>:/mnt busybox sh
+```
+
+Since Docker volumes are mounted inside containers, the easiest way to check their content is to run a temporary container with access to the volume.
+
+* `rm` deletes the container after you exit.
+* `-it` opens an interactive shell.
+* `-v <volume_name>:/mnt` mounts the volume of your choice to `/mnt` inside the container.
+* `busybox` uses a minimal image with `sh` (shell).
+* `sh` opens a shell where you can explore the volume. 
+
+Exemple : 
+
+![alt text](image/checking_volume_files.png)
