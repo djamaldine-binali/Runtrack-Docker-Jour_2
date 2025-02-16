@@ -118,3 +118,17 @@ We can check if it's working on our web browser using the port :
 To ensure that date is actually stored when we run games, we can play one and check in our files in the volume :
 
 ![alt text](image/first_game.png) 
+
+Now that we have played, we check our `results.json`file in our volume using Docker Desktop : 
+
+![alt text](image/results_dockerdesktop.png)
+
+The results are indeed stored in the file. 
+
+To check the container's content we can use these commands :
+
+```sh
+docker exec -it <container_name> ls -l /path/to/file
+```
+
+![alt text](image/checking_container_content.png)
