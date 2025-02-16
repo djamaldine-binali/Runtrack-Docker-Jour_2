@@ -140,24 +140,7 @@ Exemple with our container and files :
 
 ![alt text](image/checking_container_content.png)
 
-We can see our storage files in the container. 
-
-```sh
-docker run --rm -it -v <volume_name>:/mnt busybox sh
-```
-
-Since Docker volumes are mounted inside containers, the easiest way to check their content is to run a temporary container with access to the volume.
-
-* `rm` deletes the container after you exit.
-* `-it` opens an interactive shell.
-* `-v <volume_name>:/mnt` mounts the volume of your choice to `/mnt` inside the container.
-* `busybox` uses a minimal image with `sh` (shell).
-* `sh` opens a shell where you can explore the volume. 
-
-Exemple : 
-
-![alt text](image/checking_volume_files.png)
-
+We can see our storage files in the container.
 Let's run a few games of tictactoe !
 
 ![alt text](image/Xs_win.png)
@@ -171,3 +154,40 @@ Then let's check our results in our volume using Docker Desktop :
 ![alt text](image/score_check.png)
 
 We can see that our results correlate with the games played, it works !
+
+
+```sh
+docker run --rm -it -v <volume_name>:/mnt busybox sh
+
+```
+
+Since Docker volumes are mounted inside containers, the easiest way to check their content using a terminal is to run a temporary container with access to the volume.
+
+* `rm` deletes the container after you exit.
+* `-it` opens an interactive shell.
+* `-v <volume_name>:/mnt` mounts the volume of your choice to `/mnt` inside the container.
+* `busybox` uses a minimal image with `sh` (shell).
+* `sh` opens a shell where you can explore the volume. 
+
+Exemple : 
+
+![alt text](image/checking_volume_terminal.png)
+
+We can also use these commands to do it with an existing running container :
+
+```sh
+docker exec -it <container_name> sh
+ls -l /path/to/file/directory
+cat /path/to/file/directory/file_name
+exit
+```
+
+In our case it presents itself like so :
+
+![alt text](image/checking_volume_commands.png)
+
+* `docker exec -it tictactoe sh` runs a command inside an existing container with and interactive terminal session with shell
+* `ls -l /usr/share/nginx/html` Lists the files and directories inside `/usr/share/nginx/html/results` with `-t` showing detailed information like permissions, owner, size, or timestamps. 
+* `cat`reads and displays the entire content of results.json
+* `exit` closes the interactive shell and lets you return to whichever terminal your were using.
+
