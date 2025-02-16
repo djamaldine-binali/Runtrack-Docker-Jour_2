@@ -115,3 +115,6 @@ We can check if it's working on our web browser using the port :
 
 ![alt text](image/checking_w_browser.png)
 
+To ensure that date is actually stored when we run games, we can play one and check in our files in the volume :
+
+![alt text](image/first_game.png)
